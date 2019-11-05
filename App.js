@@ -7,7 +7,7 @@ export default function App() {
       <Text>TODO LIST</Text>
 
       <View 
-      style={{ flexDirection: 'row', justifyContent: 'space-between'}}
+      style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}
       >
         
         <TextInput 
