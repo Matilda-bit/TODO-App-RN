@@ -14,10 +14,6 @@ export default class App extends React.Component {
         ]
     }
   }
-
-componentDidMount(){
-
-}
 render(){
   const statusbar = (Platform.OS == 'android') ? <View style={styles.statusbar}></View> : <View></View>;
 
@@ -27,11 +23,12 @@ render(){
 
         <Header title="TODO APP"/>
 
-        <InputBar />
+        <InputBar textChange={todoInput => this.setState({todoInput})} />
+
+        <Text>{this.state.todoInput}</Text>
     </View>
   );
 }
-
 }
 
 
