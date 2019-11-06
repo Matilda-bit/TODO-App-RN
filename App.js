@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
+import InputBar from './components/InputBar';
 
 export default class App extends React.Component {
   constructor(){
@@ -25,6 +26,8 @@ render(){
         {statusbar}
 
         <Header title="TODO APP"/>
+
+        <InputBar />
     </View>
   );
 }
