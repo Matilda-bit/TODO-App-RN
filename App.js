@@ -1,39 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import Header from './components/Header';
 
-export default function App() {
+export default class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+        todoInput: '',
+        todos: [
+          { id: 0, title: 'Take out the trash', done: false },
+          { id: 1, title: 'Cook dinner', done: false }
+        ]
+    }
+  }
+
+componentDidMount(){
+
+}
+render(){
+  const statusbar = (Platform.OS == 'android') ? <View style={styles.statusbar}></View> : <View></View>;
+
   return (
-    <View style={{padding: 50}}>
-      <Text>TODO LIST</Text>
+    <View style={styles.container}>
+        {statusbar}
 
-      <View 
-      style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}
-      >
-        
-        <TextInput 
-        placeholder="Course Goal"
-        style={{ borderColor: 'black', borderWidth: 1, padding: 5}}
-
-        />
-        <Button 
-        title="ADD"
-        />
-
-      </View>
-
-      <View>
-
-      </View>
-      
+        <Header title="TODO APP"/>
     </View>
   );
 }
 
+}
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
+  statusbar: { 
+    backgroundColor: '#FFCE00',
+    height: 24
+  }
 });
