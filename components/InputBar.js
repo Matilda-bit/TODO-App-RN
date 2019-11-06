@@ -7,8 +7,9 @@ const InputBar = (props) => {
             <TextInput 
                 style={styles.input} 
                 onChangeText={(todoInput) => props.textChange(todoInput)}
-                value={props.todoInput}/>
-            <TouchableOpacity style={styles.addButton}>
+                value={props.todoInput}
+            />
+            <TouchableOpacity style={styles.addButton} onPress={props.addNewTodo}>
                 <Text style={styles.addButtonText}>ADD</Text>
             </TouchableOpacity>
 
@@ -29,7 +30,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F3F3F3',
         flex: 1,
         fontSize: 18,
-        height: 35
+        height: 35,
+        paddingLeft: 15
     },
     addButton: {
         height: 35,

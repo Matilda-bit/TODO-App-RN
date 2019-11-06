@@ -1,7 +1,8 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/Header';
 import InputBar from './components/InputBar';
+import TodoItem from './components/TodoItem';
 
 export default class App extends React.Component {
   constructor(){
@@ -14,6 +15,24 @@ export default class App extends React.Component {
         ]
     }
   }
+
+  addNewTodo() {
+    let todos = this.state.todos;
+
+    todos.unshift({
+      id: todos.length +1,
+      title: this.state.todoInput,
+      done: false
+
+    });
+
+    this.setState({
+      todos,
+      todoInput: ''
+    });
+    
+  }
+
 render(){
   const statusbar = (Platform.OS == 'android') ? <View style={styles.statusbar}></View> : <View></View>;
 
@@ -23,9 +42,23 @@ render(){
 
         <Header title="TODO APP"/>
 
-        <InputBar textChange={todoInput => this.setState({todoInput})} />
+        <InputBar 
+            addNewTodo={ () => this.addNewTodo()}
+            textChange={todoInput => this.setState({ todoInput })} 
+            todoInput={this.state.todoInput}
+            
+          />
 
-        <Text>{this.state.todoInput}</Text>
+        <FlatList 
+          data={this.state.todos}
+          extraData={this.state}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={ ({item, index}) => {
+            return(
+              <TodoItem todoItem={item} />
+            )
+          } }
+        />
     </View>
   );
 }
