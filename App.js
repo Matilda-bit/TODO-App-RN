@@ -33,6 +33,19 @@ export default class App extends React.Component {
     
   }
 
+  toggleDone (item){
+    let todos= this.state.todos;
+    
+    todos = todos.map((todo) => {
+      if (todo.id === item.id) {
+        todo.done = !todo.done;
+      }
+      
+      return todo;
+    })
+    this.setState({todos});
+  }
+
 render(){
   const statusbar = (Platform.OS == 'android') ? <View style={styles.statusbar}></View> : <View></View>;
 
@@ -55,7 +68,7 @@ render(){
           keyExtractor={(item, index) => index.toString()}
           renderItem={ ({item, index}) => {
             return(
-              <TodoItem todoItem={item} />
+              <TodoItem todoItem={item} toggleDone={() => this.toggleDone(item)}/>
             )
           } }
         />
