@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import Header from './components/Header';
 import InputBar from './components/InputBar';
 import TodoItem from './components/TodoItem';
@@ -10,8 +10,7 @@ export default class App extends React.Component {
     this.state = {
         todoInput: '',
         todos: [
-          { id: 0, title: 'Take out the trash', done: false },
-          { id: 1, title: 'Cook dinner', done: false }
+          { id: 0, title: 'Take out the trash', done: false , textlen: 18 }
         ]
     }
   }
@@ -20,9 +19,10 @@ export default class App extends React.Component {
     let todos = this.state.todos;
 
     todos.unshift({
-      id: todos.length +1,
+      id: todos.length,
       title: this.state.todoInput,
-      done: false
+      done: false,
+      textlen: this.state.todoInput.length
 
     });
 
@@ -53,6 +53,7 @@ export default class App extends React.Component {
     this.setState({todos});
   }
 
+ 
 render(){
   const statusbar = (Platform.OS == 'android') ? <View style={styles.statusbar}></View> : <View></View>;
 
@@ -68,21 +69,23 @@ render(){
             todoInput={this.state.todoInput}
             
           />
-
-        <FlatList 
-          data={this.state.todos}
-          extraData={this.state}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={ ({item, index}) => {
-            return(
-              <TodoItem 
-                todoItem={item} toggleDone={() => this.toggleDone(item)}
-                removeTodo={() => this.removeTodo(item)}
-              />
-            )
-          } }
-        />
-    </View>
+        <ScrollView>
+          <FlatList 
+                  data={ this.state.todos}
+                  extraData={this.state}
+                  keyExtractor={(item, index) => index.toString()}
+                  renderItem={ ({item, index}) => {
+                    return(
+                      <TodoItem 
+                        todoItem={item} toggleDone={() => this.toggleDone(item)}
+                        removeTodo={() => this.removeTodo(item)}
+                      />
+                    )
+                  } }
+            />
+          </ScrollView>
+                
+        </View>
   );
 }
 }

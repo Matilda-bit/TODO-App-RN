@@ -5,7 +5,7 @@ export default class TodoItem extends React.Component {
     constructor (props) {
         super(props);
     }
-
+    
     render(){
         const todoItem= this.props.todoItem;
         
@@ -15,7 +15,7 @@ export default class TodoItem extends React.Component {
                 onPress={() => this.props.toggleDone()}
                 
             > 
-                <Text style={(todoItem.done) ? { color: '#AAAAAA' } : { color: '#313131' }}>
+                <Text style={(todoItem.done) ? { color: '#AAAAAA' } : { color: '#313131' }&& (todoItem.textlen<= 35) ? {} : {}}>
                     { todoItem.title }
                 </Text>
                     
