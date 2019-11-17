@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/Header';
 import InputBar from './components/InputBar';
-import  from './components/TodoItem';
+import TodoItem from './components/TodoItem';
 
 export default class App extends React.Component {
   constructor(){
