@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 
 const InputBar = (props) => {
     return(
-        <View style={styles.inputContener}>
+        <View style={styles.inputContainer}>
             <TextInput 
                 style={styles.input} 
                 onChangeText={(todoInput) => props.textChange(todoInput)}
@@ -18,7 +18,7 @@ const InputBar = (props) => {
 }
 
 const styles = StyleSheet.create({
-    inputContener: {
+    inputContainer: {
         flexDirection: 'row', 
         justifyContent: 'space-between', 
         shadowOffset: {width: 0, height:3},

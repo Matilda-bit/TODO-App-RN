@@ -20,7 +20,7 @@ export default class TodoItem extends React.Component {
                 </Text>
                     
                 <Button
-                    title="Remote"
+                    title="Remove"
                     color={(todoItem.done) ? 'rgba(200, 0, 0, 0.5)' : 'rgba(255, 0, 0, 1)'}
                     onPress={() => this.props.removeTodo()}
                 />
