@@ -14,8 +14,8 @@ const InputBar = (props) => {
             </TouchableOpacity>
 
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     inputContainer: {
