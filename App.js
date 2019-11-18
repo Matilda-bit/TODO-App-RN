@@ -17,6 +17,7 @@ export default class App extends React.Component {
 
   addNewTodo() {
     let todos = this.state.todos;
+    console.log(this.state.todoInput)
     if(this.state.todoInput.length != 0){
       todos.unshift({
         id: todos.length,
