@@ -5,10 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/colors';
 import StartButton from '../components/Buttons/StartButton';
 
-useEffect(() => {
-    if (currentGuess === userChoice){
-        onGameOver(pastGuesses.length);
-    }
 
 const StartScreen = props => {
     return (
@@ -33,9 +29,6 @@ const styles = StyleSheet.create({
     conainer:{
         width: '100%',
         height: '100%',
-    },
-    buttonContainer: {
-       
     }
 });
 
