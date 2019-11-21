@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
+import Colors from '../constants/colors';
+
+
 const InputBar = (props) => {
     return(
         <View style={styles.inputContainer}>
@@ -36,13 +39,14 @@ const styles = StyleSheet.create({
     addButton: {
         height: 35,
         width:100,
-        backgroundColor: '#FFCE00',
+        // backgroundColor: '#FFCE00',
+        backgroundColor: Colors.basic_menta,
         alignItems: 'center',
         justifyContent: 'center'
     
     },
     addButtonText: {
-        color: '#171717',
+        color: Colors.my_white,
         fontSize: 18,
         fontWeight: '700'
     }
