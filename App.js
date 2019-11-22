@@ -16,13 +16,17 @@ const fetchFonts = () => {
 };
 
 export default function App() {
-  const [rounds, setRounds] = useState(0);
   const [dataLoaded, setdataLoaded] = useState(false);
+  const [roundsClick, setroundsClick] = useState(0);
   const [userChoice, setUserChoice] = useState(false);
+  
+  onPress = () => {
+    setroundsClick(roundsClick+1);
+    if (roundsClick > 2){
+      setUserChoice(true);
+    }
+  }
 
-  const startHandler = () => {
-     setUserChoice(true);
-   }
   if(!dataLoaded){
     return (
       <AppLoading 
@@ -33,18 +37,13 @@ export default function App() {
     );
   };
 
-  const mainHandler = numOfRounds =>{
-    setRounds(numOfRounds);
-    return numOfRounds;
-  };
+  let content = <StartScreen />;
 
-  let content = <StartScreen onMain={mainHandler} />;
-
-   if (rounds > 2) {
+   if ( userChoice > true ) {
      // <GameScreen userChoice={true} onGameOver={gameOverHandler} />
      content = (
       
-       <MainScreen userChoice={true} onStart={startHandler} />
+       <MainScreen onStart={onMain} />
        );
      };
 

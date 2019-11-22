@@ -11,17 +11,13 @@ import BodyText from '../components/Text/BodyText'
 const StartScreen  = props => {
 
     const [roundsClick, setRoundsClick] = useState(0);
-    const { onMain } = props;
-    
-    useEffect(() => {
-        if (roundsClick > 2){
-            onMain();
-        }
-    }, [roundsClick, onMain]); 
-    
 
-    onPressHandler = () => {
-    setRoundsClick(roundsClick +1)
+
+    onPress = () => {
+        setRoundsClick(roundsClick +1);
+        if (roundsClick > 1){
+            //props.onPress;
+        }
     }
     
         return (
@@ -33,7 +29,7 @@ const StartScreen  = props => {
                 <Text style={[styles.countText]}>
                         { this.roundsClick !== 0 ? this.roundsClick: null}
                 </Text>
-                <StartButton  onPressHandler={this.onPressHandler} >
+                <StartButton onPress={this.onPress}>
                     <Text style={styles.boxButton}></Text>
                 </StartButton>
 
@@ -43,7 +39,7 @@ const StartScreen  = props => {
                 <View>
                     <BodyText style={styles.box}>
                         no, {"\n"}
-                        I'm not Ready...
+                        I'm not Ready... {roundsClick}
                     </BodyText>
                 </View>  
             </View>

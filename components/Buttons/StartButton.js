@@ -14,7 +14,7 @@ const StartButton = props => {
     
     onPress = () => {
         setCount(count+1);
-        props.onPress;
+        props.onPress();
 
         if 
         (count === -1) {
