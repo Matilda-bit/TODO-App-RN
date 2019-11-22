@@ -7,15 +7,14 @@ const StartButton = props => {
     const textOutputFirst = <Text>I'm Ready</Text>;
     const textOutputSecond = <Text>Are You Sure?</Text>;
     const textOutputLast = <Text>OKAY, let's do it!</Text>;
-
     
     const [textOutput, setTextOutput] = useState(textOutputFirst);
-    //const { roundsClick } = props;
     const [ count, setCount ] = useState(0);
-    // const textOutput = <Text>I'm Ready</Text>;
+
     
     onPress = () => {
         setCount(count+1);
+        props.onPress;
 
         if 
         (count === -1) {
