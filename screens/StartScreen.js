@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+    View, 
+    Text, 
+    StyleSheet, 
+    TouchableOpacity, 
+    Alert
+} from 'react-native';
+
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/colors';
@@ -8,15 +15,26 @@ import BodyText from '../components/Text/BodyText'
 
 
 
-const StartScreen  = props => {
+const StartScreen  = (props) => {
 
     const [roundsClick, setRoundsClick] = useState(0);
-
+    const [userChoice, setUserChoice] = useState(props.userChoice);
+    
+    // const onPressAlert = (props) = {
+    //     if() {
+    //         Alert.alert(
+    //             'no Ready?',
+    //             'Go Home', 
+    //             [{ text: 'Okay', style: 'destructive', onPress: onPress }]
+    //         );
+    //     }
+        
+    // };
 
     onPress = () => {
         setRoundsClick(roundsClick +1);
         if (roundsClick > 1){
-            //props.onPress;
+            props.onStart(true);
         }
     }
     
@@ -37,10 +55,12 @@ const StartScreen  = props => {
 
                 {/* text */}
                 <View>
+                    <TouchableOpacity activeOpacity={0.6} >
                     <BodyText style={styles.box}>
                         no, {"\n"}
                         I'm not Ready... {roundsClick}
                     </BodyText>
+                    </TouchableOpacity>
                 </View>  
             </View>
     );

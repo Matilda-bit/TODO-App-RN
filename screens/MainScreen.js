@@ -8,6 +8,7 @@ import Colors from '../constants/colors';
 
 
 const MainScreen = props => {
+    
         return (
             <View style={styles.container}>
                 <View style={styles.statusbar}></View>
