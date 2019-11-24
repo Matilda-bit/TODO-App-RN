@@ -10,30 +10,65 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/colors';
-import StartButton from '../components/Buttons/StartButton';
 import BodyText from '../components/Text/BodyText'
 
 
 
 const StartScreen  = (props) => {
+    const textOutputFirst = <Text>I'm Ready</Text>;
+    const textOutputSecond = <Text>Are You Sure?</Text>;
+    const textOutputLast = <Text>OKAY, let's do it!</Text>;
+
+    const textBotomOutput = <Text>no, {"\n"} I'm not Ready... {roundsClick}</Text>
+    const textBotomOutputFin =  <Text>
+                                    <Text style={styles.line}>no</Text>, {"\n"}{' '}
+                                    <Text style={styles.highlight}>I'm</Text> {' '} 
+                                    <Text style={styles.line}>not</Text> {' '} 
+                                    <Text style={styles.highlight}>Ready</Text>
+                                    ...
+                                </Text>; 
+
+    const [ myText, setMyText ] = useState(textBotomOutput);
+    const [textOutput, setTextOutput] = useState(textOutputFirst);
 
     const [roundsClick, setRoundsClick] = useState(0);
     const [userChoice, setUserChoice] = useState(props.userChoice);
     
-    // const onPressAlert = (props) = {
-    //     if() {
-    //         Alert.alert(
-    //             'no Ready?',
-    //             'Go Home', 
-    //             [{ text: 'Okay', style: 'destructive', onPress: onPress }]
-    //         );
-    //     }
-        
-    // };
+    
 
+    const resetInputHandler = () => {
+        setRoundsClick(0);
+        setTextOutput(textOutputFirst);
+        setMyText(textBotomOutput);
+        //setResetChoice(true);
+    };   
+
+    const noReadyHandler = () => {
+        if (!userChoice) {            
+            Alert.alert('NOT READY?', 'Well, come back later...', [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }])
+        };
+        
+        
+    };
+    
     onPress = () => {
         setRoundsClick(roundsClick +1);
-        if (roundsClick > 1){
+
+        if 
+        (roundsClick === -1) {
+            setTextOutput(textOutputFirst);
+        }
+        else if 
+            (roundsClick === 0) {
+                setTextOutput(textOutputSecond);  
+        }
+        else if 
+            (roundsClick === 1) {
+               setTextOutput(textOutputLast);
+               setMyText(textBotomOutputFin);
+        }
+
+        else if (roundsClick > 1){
             props.onStart(true);
         }
     }
@@ -43,22 +78,20 @@ const StartScreen  = (props) => {
 
                 {/* button  */}
                 <View style={styles.container}>
-
-                <Text style={[styles.countText]}>
-                        { this.roundsClick !== 0 ? this.roundsClick: null}
-                </Text>
-                <StartButton onPress={this.onPress}>
-                    <Text style={styles.boxButton}></Text>
-                </StartButton>
+              
+                    <TouchableOpacity activeOpacity={0.6} onPress={this.onPress}>
+                        <View style={styles.button}>
+                            <Text style={styles.buttonText}>{ textOutput }</Text>
+                        </View>
+                    </TouchableOpacity>
 
                 </View>
 
                 {/* text */}
                 <View>
-                    <TouchableOpacity activeOpacity={0.6} >
+                    <TouchableOpacity activeOpacity={0.6} onPress = {noReadyHandler} >
                     <BodyText style={styles.box}>
-                        no, {"\n"}
-                        I'm not Ready... {roundsClick}
+                        {myText}
                     </BodyText>
                     </TouchableOpacity>
                 </View>  
@@ -87,16 +120,34 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         textAlign: 'center'
     },
-    boxButton: {
-        height: 10
-    },
     countContainer: {
         alignItems: 'center',
         padding: 10
       },
     countText: {
         color: '#FF00FF'
-      }
+      },
+      button: {
+        width: 260,
+        height: 260,
+        borderRadius: 135,
+        borderWidth: 3,
+        borderColor: Colors.my_black, 
+        backgroundColor: Colors.basic_menta,
+        paddingTop: 14
+       
+    },
+    buttonText: {
+        //height: 10,
+        paddingTop: '25%',
+        paddingBottom: '25%',
+        textAlign: 'center',
+        color: Colors.my_white,
+        fontFamily: 'my-font-1',
+        fontSize: 60,
+        
+        textAlignVertical: 'top'
+    }
 });
 
 export default StartScreen;
