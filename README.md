@@ -7,9 +7,10 @@
 - [ ] ...
 
 It is a simple application with basic functionality for keeping a user's to-do or shopping list.
+
 working buttons for 
 + adding, 
-+ changing, 
++ changing status, 
 + and deleting 
 
 any item from the list at the request of the user, as well as a pleasant interface.
