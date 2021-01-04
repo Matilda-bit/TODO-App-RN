@@ -11,7 +11,7 @@ import Colors from '../constants/colors';
 export default class MainScreen extends React.Component {
     
     constructor(){
-        super()
+        super(props);
         this.state = {
             todoInput: '', 
             todos: [
