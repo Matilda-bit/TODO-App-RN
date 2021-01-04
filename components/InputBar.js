@@ -13,7 +13,7 @@ const InputBar = (props) => {
                 value={props.todoInput}
             />
             <TouchableOpacity style={styles.addButton} onPress={props.addNewTodo}>
-                <Text style={styles.addButtonText}>ADD</Text>
+                <Text style={styles.addTextButton}>ADD</Text>
             </TouchableOpacity>
 
         </View>
@@ -40,12 +40,13 @@ const styles = StyleSheet.create({
         height: 35,
         width:100,
         // backgroundColor: '#FFCE00',
-        backgroundColor: Colors.basic_menta,
+        //backgroundColor: Colors.basic_menta,
+        backgroundColor: '#00afa3',
         alignItems: 'center',
         justifyContent: 'center'
     
     },
-    addButtonText: {
+    addTextButton: {
         color: Colors.my_white,
         fontSize: 18,
         fontWeight: '700'
