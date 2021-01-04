@@ -57,6 +57,9 @@ export default class MainScreen extends React.Component {
     
         this.setState({todos});
     }
+    // editTodo (item){
+    //     let todos = this.state.todos;
+    // }
 
     render () {
         return (
@@ -92,10 +95,15 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        //height: '80%',
+        width: '100%'
+
     },
     statusbar: { 
         backgroundColor: Colors.basic_menta,
+        //backgroundColor: '#00afa3',
+        //height: '80%',
         height: 24
       }
 });
