@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 2,
         borderColor: Colors.my_black, 
-        backgroundColor: Colors.basic_menta
+        // backgroundColor: Colors.basic_menta
+        backgroundColor: '#00afa3'
     },
     buttonText: {
         textAlign: 'center',
