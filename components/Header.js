@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         color: Colors.my_white,
         // color: Colors.basic,
         fontSize: 28,
-        fontWeight: '900',
+        // fontWeight: '900',
+        fontWeight: "bold",
         textTransform: 'uppercase'
     }
 });
